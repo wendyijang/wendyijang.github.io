@@ -36,7 +36,7 @@
         <script src="js/leaflet-control-geocoder.Geocoder.js"></script>
         <script src="js/leaflet-measure.js"></script>
         <script src="js/leaflet-search.js"></script>
-        <script src="data/Specialisation_0.js"></script>
+        <script src="data/Spcialisation_0.js"></script>
         <script>
         var highlightLayer;
         function highlightFeature(e) {
@@ -56,7 +56,7 @@
         }
         var map = L.map('map', {
             zoomControl:true, maxZoom:28, minZoom:1
-        }).fitBounds([[1.9988693658913537,8.692885266105819],[7.9970592413749575,17.985071807903235]]);
+        })
         var hash = new L.Hash(map);
         map.attributionControl.setPrefix('<a href="https://github.com/tomchadwin/qgis2web" target="_blank">qgis2web</a> &middot; <a href="https://leafletjs.com" title="A JS library for interactive maps">Leaflet</a> &middot; <a href="https://qgis.org">QGIS</a>');
         var autolinker = new Autolinker({truncate: {length: 30, location: 'smart'}});
@@ -75,8 +75,11 @@
         .className += ' fas fa-ruler';
         var bounds_group = new L.featureGroup([]);
         function setBounds() {
+            if (bounds_group.getLayers().length) {
+                map.fitBounds(bounds_group.getBounds());
+            }
         }
-        function pop_Specialisation_0(feature, layer) {
+        function pop_Spcialisation_0(feature, layer) {
             layer.on({
                 mouseout: function(e) {
                     for (i in e.target._eventParents) {
@@ -98,10 +101,6 @@
                         <td>' + (feature.properties['Nom_Arro_1'] !== null ? autolinker.link(feature.properties['Nom_Arro_1'].toLocaleString()) : '') + '</td>\
                     </tr>\
                     <tr>\
-                        <th scope="row">Département</th>\
-                        <td>' + (feature.properties['Nom_dept'] !== null ? autolinker.link(feature.properties['Nom_dept'].toLocaleString()) : '') + '</td>\
-                    </tr>\
-                    <tr>\
                         <th scope="row">Région</th>\
                         <td>' + (feature.properties['Nom_region'] !== null ? autolinker.link(feature.properties['Nom_region'].toLocaleString()) : '') + '</td>\
                     </tr>\
@@ -110,134 +109,134 @@
                         <td>' + (feature.properties['Area'] !== null ? autolinker.link(feature.properties['Area'].toLocaleString()) : '') + '</td>\
                     </tr>\
                     <tr>\
-                        <th scope="row">Specialisation</th>\
+                        <th scope="row">Spécialisation</th>\
                         <td>' + (feature.properties['specialisa'] !== null ? autolinker.link(feature.properties['specialisa'].toLocaleString()) : '') + '</td>\
                     </tr>\
                 </table>';
             layer.bindPopup(popupContent, {maxHeight: 400});
         }
 
-        function style_Specialisation_0_0(feature) {
+        function style_Spcialisation_0_0(feature) {
             switch(String(feature.properties['specialisa'])) {
                 case 'confes':
                     return {
-                pane: 'pane_Specialisation_0',
+                pane: 'pane_Spcialisation_0',
                 opacity: 1,
-                color: 'rgba(35,35,35,1.0)',
+                color: 'rgba(255,255,255,1.0)',
                 dashArray: '',
                 lineCap: 'butt',
                 lineJoin: 'miter',
                 weight: 1.0, 
                 fill: true,
                 fillOpacity: 1,
-                fillColor: 'rgba(233,255,190,1.0)',
+                fillColor: 'rgba(236,120,120,1.0)',
                 interactive: true,
             }
                     break;
                 case 'pri_confes':
                     return {
-                pane: 'pane_Specialisation_0',
+                pane: 'pane_Spcialisation_0',
                 opacity: 1,
-                color: 'rgba(35,35,35,1.0)',
+                color: 'rgba(255,255,255,1.0)',
                 dashArray: '',
                 lineCap: 'butt',
                 lineJoin: 'miter',
                 weight: 1.0, 
                 fill: true,
                 fillOpacity: 1,
-                fillColor: 'rgba(242,197,167,1.0)',
+                fillColor: 'rgba(235,84,67,1.0)',
                 interactive: true,
             }
                     break;
                 case 'prive':
                     return {
-                pane: 'pane_Specialisation_0',
+                pane: 'pane_Spcialisation_0',
                 opacity: 1,
-                color: 'rgba(35,35,35,1.0)',
+                color: 'rgba(255,255,255,1.0)',
                 dashArray: '',
                 lineCap: 'butt',
                 lineJoin: 'miter',
                 weight: 1.0, 
                 fill: true,
                 fillOpacity: 1,
-                fillColor: 'rgba(239,228,190,1.0)',
+                fillColor: 'rgba(138,233,21,1.0)',
                 interactive: true,
             }
                     break;
                 case 'public':
                     return {
-                pane: 'pane_Specialisation_0',
+                pane: 'pane_Spcialisation_0',
                 opacity: 1,
-                color: 'rgba(35,35,35,1.0)',
+                color: 'rgba(255,255,255,1.0)',
                 dashArray: '',
                 lineCap: 'butt',
                 lineJoin: 'miter',
                 weight: 1.0, 
                 fill: true,
                 fillOpacity: 1,
-                fillColor: 'rgba(222,158,102,1.0)',
+                fillColor: 'rgba(81,225,33,1.0)',
                 interactive: true,
             }
                     break;
                 case 'public_confes':
                     return {
-                pane: 'pane_Specialisation_0',
+                pane: 'pane_Spcialisation_0',
                 opacity: 1,
-                color: 'rgba(35,35,35,1.0)',
+                color: 'rgba(255,255,255,1.0)',
                 dashArray: '',
                 lineCap: 'butt',
                 lineJoin: 'miter',
                 weight: 1.0, 
                 fill: true,
                 fillOpacity: 1,
-                fillColor: 'rgba(207,60,43,1.0)',
+                fillColor: 'rgba(127,205,62,1.0)',
                 interactive: true,
             }
                     break;
                 case 'public_prive':
                     return {
-                pane: 'pane_Specialisation_0',
+                pane: 'pane_Spcialisation_0',
                 opacity: 1,
-                color: 'rgba(35,35,35,1.0)',
+                color: 'rgba(255,255,255,1.0)',
                 dashArray: '',
                 lineCap: 'butt',
                 lineJoin: 'miter',
                 weight: 1.0, 
                 fill: true,
                 fillOpacity: 1,
-                fillColor: 'rgba(196,10,10,1.0)',
+                fillColor: 'rgba(35,101,68,1.0)',
                 interactive: true,
             }
                     break;
             }
         }
-        map.createPane('pane_Specialisation_0');
-        map.getPane('pane_Specialisation_0').style.zIndex = 400;
-        map.getPane('pane_Specialisation_0').style['mix-blend-mode'] = 'normal';
-        var layer_Specialisation_0 = new L.geoJson(json_Specialisation_0, {
+        map.createPane('pane_Spcialisation_0');
+        map.getPane('pane_Spcialisation_0').style.zIndex = 400;
+        map.getPane('pane_Spcialisation_0').style['mix-blend-mode'] = 'normal';
+        var layer_Spcialisation_0 = new L.geoJson(json_Spcialisation_0, {
             attribution: '',
             interactive: true,
-            dataVar: 'json_Specialisation_0',
-            layerName: 'layer_Specialisation_0',
-            pane: 'pane_Specialisation_0',
-            onEachFeature: pop_Specialisation_0,
-            style: style_Specialisation_0_0,
+            dataVar: 'json_Spcialisation_0',
+            layerName: 'layer_Spcialisation_0',
+            pane: 'pane_Spcialisation_0',
+            onEachFeature: pop_Spcialisation_0,
+            style: style_Spcialisation_0_0,
         });
-        bounds_group.addLayer(layer_Specialisation_0);
-        map.addLayer(layer_Specialisation_0);
-        map.createPane('pane_GoogleHybrid_1');
-        map.getPane('pane_GoogleHybrid_1').style.zIndex = 401;
-        var layer_GoogleHybrid_1 = L.tileLayer('https://mt1.google.com/vt/lyrs=y&x={x}&y={y}&z={z}', {
-            pane: 'pane_GoogleHybrid_1',
-            opacity: 0.495,
-            attribution: '<a href="https://www.google.at/permissions/geoguidelines/attr-guide.html">Map data ©2015 Google</a>',
+        bounds_group.addLayer(layer_Spcialisation_0);
+        map.addLayer(layer_Spcialisation_0);
+        map.createPane('pane_Imagesatellite_1');
+        map.getPane('pane_Imagesatellite_1').style.zIndex = 401;
+        var layer_Imagesatellite_1 = L.tileLayer('http://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            pane: 'pane_Imagesatellite_1',
+            opacity: 0.516,
+            attribution: '<a href="https://www.openstreetmap.org/copyright">© OpenStreetMap contributors, CC-BY-SA</a>',
             minZoom: 1,
             maxZoom: 28,
             minNativeZoom: 0,
-            maxNativeZoom: 20
+            maxNativeZoom: 19
         });
-        layer_GoogleHybrid_1;
-        map.addLayer(layer_GoogleHybrid_1);
+        layer_Imagesatellite_1;
+        map.addLayer(layer_Imagesatellite_1);
         var osmGeocoder = new L.Control.Geocoder({
             collapsed: true,
             position: 'topleft',
@@ -249,15 +248,25 @@
         document.getElementsByClassName('leaflet-control-geocoder-icon')[0]
         .title += 'Search for a place';
         var baseMaps = {};
-        L.control.layers(baseMaps,{"Google Hybrid": layer_GoogleHybrid_1,'Specialisation<br /><table><tr><td style="text-align: center;"><img src="legend/Specialisation_0_Confessionnelle0.png" /></td><td>Confessionnelle</td></tr><tr><td style="text-align: center;"><img src="legend/Specialisation_0_PrivéeConfessionnelle1.png" /></td><td>Privée - Confessionnelle</td></tr><tr><td style="text-align: center;"><img src="legend/Specialisation_0_Privée2.png" /></td><td>Privée</td></tr><tr><td style="text-align: center;"><img src="legend/Specialisation_0_Publique3.png" /></td><td>Publique</td></tr><tr><td style="text-align: center;"><img src="legend/Specialisation_0_PubliqueConfessionnelle4.png" /></td><td>Publique - Confessionnelle</td></tr><tr><td style="text-align: center;"><img src="legend/Specialisation_0_PubliquePrivée5.png" /></td><td>Publique - Privée</td></tr></table>': layer_Specialisation_0,},{collapsed:false}).addTo(map);
+        L.control.layers(baseMaps,{"Image satellite": layer_Imagesatellite_1,'Spécialisation<br /><table><tr><td style="text-align: center;"><img src="legend/Spcialisation_0_Confessionnelle0.png" /></td><td>Confessionnelle</td></tr><tr><td style="text-align: center;"><img src="legend/Spcialisation_0_PrivéeConfessionnelle1.png" /></td><td>Privée - Confessionnelle</td></tr><tr><td style="text-align: center;"><img src="legend/Spcialisation_0_Privée2.png" /></td><td>Privée </td></tr><tr><td style="text-align: center;"><img src="legend/Spcialisation_0_Publique3.png" /></td><td>Publique</td></tr><tr><td style="text-align: center;"><img src="legend/Spcialisation_0_PubliqueConfessionnelle4.png" /></td><td>Publique - Confessionnelle</td></tr><tr><td style="text-align: center;"><img src="legend/Spcialisation_0_PubliquePrivée5.png" /></td><td>Publique - Privée</td></tr></table>': layer_Spcialisation_0,},{collapsed:false}).addTo(map);
         setBounds();
         map.addControl(new L.Control.Search({
-            layer: layer_Specialisation_0,
+            layer: layer_Spcialisation_0,
             initial: false,
             hideMarkerOnCollapse: true,
             propertyName: 'Nom_Arro_1'}));
         document.getElementsByClassName('search-button')[0].className +=
          ' fa fa-binoculars';
+        resetLabels([layer_Spcialisation_0]);
+        map.on("zoomend", function(){
+            resetLabels([layer_Spcialisation_0]);
+        });
+        map.on("layeradd", function(){
+            resetLabels([layer_Spcialisation_0]);
+        });
+        map.on("layerremove", function(){
+            resetLabels([layer_Spcialisation_0]);
+        });
         </script>
     </body>
 </html>
